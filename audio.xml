@@ -2,20 +2,43 @@
 <Audio version="1.0" timeUnit="ms" interactionArea="#touchArea" gain="-10dB">
 	<Chain portamento="50">
 
-		<OscillatorNode type="sawtooth">
-			<frequency follow="relX" map="0,100,100,1000"></frequency>
-		</OscillatorNode>
+		<Mixer>
+
+			<OscillatorNode type="sawtooth">
+				<frequency follow="relX" map="0,100,100,900"></frequency>
+			</OscillatorNode>
+
+			<OscillatorNode type="sine">
+				<frequency follow="relX" map="0,100,440,880"></frequency>
+			</OscillatorNode>
+
+			<OscillatorNode type="sine">
+				<frequency follow="relX" map="0,100,110,440"></frequency>
+			</OscillatorNode>
+
+			<OscillatorNode type="squre">
+				<frequency follow="relX" map="0,100,50,250"></frequency>
+			</OscillatorNode>
+
+			<OscillatorNode type="triangle">
+				<frequency follow="relX" map="0,100,500,200"></frequency>
+			</OscillatorNode>
+			
+		</Mixer>
 
 		<BiquadFilterNode type="lowpass">
-			<frequency follow="relY" map="100,0,0,5000, 3"></frequency>
+			<frequency follow="relY" map="100,0,0,2000,1"></frequency>
 		</BiquadFilterNode>
 
 		<GainNode>
 			<gain>
-				<Envelope adsr="100,100,50,20" trig="pointer" max="1"></Envelope>
+				<Envelope adsr="100,7000,300,500" trig="pointer" max="1"></Envelope>
 			</gain>
 		</GainNode>
 
+		<DelayNode delaytime="200"></DelayNode>
+
 	</Chain>
 
+	
 </Audio>
